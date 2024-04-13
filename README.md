@@ -1,5 +1,5 @@
 # I5UnityTools
-Just a few things that make my Avatar Creation workflow a bit easier.
+Just a few things that make my Avatar Creation workflow a bit easier. I'll add stuff on the go.
 
 All tools located in `Tools/I5Tools`
 
