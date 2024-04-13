@@ -17,3 +17,24 @@ Might expand this later when i got time for it.
 ## Force Scene View in Play Mode
 
 Creates a `ForceSceneView` Gameobject that switches to SceneView instead of GameView when going into play mode.
+
+# Download / Install
+
+Either download the latest release from [here](https://github.com/I5UCC/VRCMultiUploader/releases/latest), or add my Repository to VCC (VRChat Creator Companion): <br>
+
+[<img src="https://github.com/I5UCC/VRCMultiUploader/assets/43730681/7130b744-dcb7-4525-a62c-9bad41331c1c"  width="102" height="35">](https://i5ucc.github.io/vpm/I5Tools.html) <br>
+or <br>
+
+[<img src="https://user-images.githubusercontent.com/43730681/235304229-ce2b4689-4945-4282-967e-40bfbf8ebf54.png" height="35">](https://i5ucc.github.io/vpm/main.html) <br>
+
+<details>
+  <summary>Manually adding to VCC:</summary>
+  
+  1. Open VCC
+  2. Click "Settings" in the bottom left
+  3. Click the "Packages" tab at the top
+  4. Click "Add Repository" in the top right
+  5. Paste `https://i5ucc.github.io/vpm/VRCMultiUploader.json` into the text field and click "Add"
+  6. Click "I understand, Add Repository" in the popup after reading its contents
+  7. Activate the checkbox next to the repository "VRCMultiUploader"
+  
