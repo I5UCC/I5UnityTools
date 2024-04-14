@@ -25,7 +25,7 @@ Deletes all usr_ folders in the VRChat OSC folder. OSC Configurator is a bit ann
 
 # Download / Install
 
-Either download the latest release from [here](https://github.com/I5UCC/VRCMultiUploader/releases/latest), or add my Repository to VCC (VRChat Creator Companion): <br>
+Either download the latest release from [here](https://github.com/I5UCC/I5UnityTools/releases/latest), or add my Repository to VCC (VRChat Creator Companion): <br>
 
 [<img src="https://github.com/I5UCC/VRCMultiUploader/assets/43730681/7130b744-dcb7-4525-a62c-9bad41331c1c"  width="102" height="35">](https://i5ucc.github.io/vpm/I5Tools.html) <br>
 or <br>
