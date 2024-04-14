@@ -19,6 +19,10 @@ Creates a `ForceSceneView` Gameobject that switches to SceneView instead of Game
 
 Sets all Physbones immobileType to World and sets it to 1.0. I just like to use that personally :)
 
+## Delete All OSC Config Files
+
+Deletes all usr_ folders in the VRChat OSC folder. OSC Configurator is a bit annoying sometimes :)
+
 # Download / Install
 
 Either download the latest release from [here](https://github.com/I5UCC/VRCMultiUploader/releases/latest), or add my Repository to VCC (VRChat Creator Companion): <br>
