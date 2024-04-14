@@ -1,11 +1,8 @@
-# I5UnityTools
+# I5UnityTools [![Github All Releases](https://img.shields.io/github/downloads/i5ucc/I5UnityTools/total.svg)](https://github.com/I5UCC/I5UnityTools/releases/latest) <a href='https://ko-fi.com/i5ucc' target='_blank'><img height='35' style='border:0px;height:25px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
+
 Just a few things that make my Avatar Creation workflow a bit easier. I'll add stuff on the go.
 
 All tools located in `Tools/I5Tools`
-
-## Make All Bones Immovable in World Space
-
-Sets all Physbones immobileType to World and sets it to 1. I just like to use that personally :)
 
 ## Optimize Texture Formats
 
@@ -17,6 +14,10 @@ Might expand this later when i got time for it.
 ## Force Scene View in Play Mode
 
 Creates a `ForceSceneView` Gameobject that switches to SceneView instead of GameView when going into play mode.
+
+## Make All Bones Immovable in World Space
+
+Sets all Physbones immobileType to World and sets it to 1. I just like to use that personally :)
 
 # Download / Install
 
