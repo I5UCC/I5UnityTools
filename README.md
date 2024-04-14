@@ -17,7 +17,7 @@ Creates a `ForceSceneView` Gameobject that switches to SceneView instead of Game
 
 ## Make All Bones Immovable in World Space
 
-Sets all Physbones immobileType to World and sets it to 1. I just like to use that personally :)
+Sets all Physbones immobileType to World and sets it to 1.0. I just like to use that personally :)
 
 # Download / Install
 
