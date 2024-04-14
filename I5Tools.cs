@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEditor;
 using VRC.SDK3.Dynamics.PhysBone.Components;
 using VRC.Dynamics;
+using VRC.SDKBase.Editor;
 
 namespace I5Tools
 {
@@ -72,6 +73,25 @@ namespace I5Tools
         {
             GameObject debugManager = new GameObject("ForceSceneView");
             debugManager.AddComponent<ForceSceneView>();
+        }
+
+        [MenuItem("Tools/I5Tools/Delete All OSC Config Files")]
+        public static void DeleteAllOscConfigFiles()
+        {
+            string oscfolderpath = VRC_SdkBuilder.GetLocalLowPath() + "/VRChat/VRChat/OSC/";
+            Debug.Log("Deleting all usr_* folders in " + oscfolderpath);
+            string[] oscfolders = System.IO.Directory.GetDirectories(oscfolderpath);
+            oscfolders = System.Array.FindAll(oscfolders, s => s.Contains("usr_"));
+            if (oscfolders.Length == 0)
+            {
+                Debug.Log("No OSC folders found");
+                return;
+            }
+            foreach (string oscfolder in oscfolders)
+            {
+                Debug.Log("Deleting " + oscfolder);
+                System.IO.Directory.Delete(oscfolder, true);
+            }
         }
     }
 }
