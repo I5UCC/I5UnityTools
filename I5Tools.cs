@@ -9,18 +9,7 @@ namespace I5Tools
 {
     public class Tools : MonoBehaviour
     {
-        [MenuItem("Tools/I5Tools/Make All Bones Immovable in World Space")]
-        public static void MakeAllBonesImmovable()
-        {
-            VRCPhysBone[] physBones = FindObjectsOfType<VRCPhysBone>();
-            foreach (VRCPhysBone physBone in physBones)
-            {
-                physBone.immobileType = VRCPhysBoneBase.ImmobileType.World;
-                physBone.immobile = 1.0f;
-            }
-        }
-
-        [MenuItem("Tools/I5Tools/Optimize Texture Formats")]
+        [MenuItem("Tools/I5Tools/Optimize Texture Formats", false, 1000)]
         public static void OptimizeTextureFormats()
         {
             string[] guids = AssetDatabase.FindAssets("t:Texture2D");
@@ -68,14 +57,18 @@ namespace I5Tools
             }
         }
 
-        [MenuItem("Tools/I5Tools/Force Scene View in Play Mode")]
-        public static void CreateDebugManager()
+        [MenuItem("Tools/I5Tools/Make All Bones Immovable in World Space", false, 1001)]
+        public static void MakeAllBonesImmovable()
         {
-            GameObject debugManager = new GameObject("ForceSceneView");
-            debugManager.AddComponent<ForceSceneView>();
+            VRCPhysBone[] physBones = FindObjectsOfType<VRCPhysBone>();
+            foreach (VRCPhysBone physBone in physBones)
+            {
+                physBone.immobileType = VRCPhysBoneBase.ImmobileType.World;
+                physBone.immobile = 1.0f;
+            }
         }
 
-        [MenuItem("Tools/I5Tools/Delete All OSC Config Files")]
+        [MenuItem("Tools/I5Tools/Delete All OSC Config Files", false, 1002)]
         public static void DeleteAllOscConfigFiles()
         {
             string oscfolderpath = VRC_SdkBuilder.GetLocalLowPath() + "/VRChat/VRChat/OSC/";
@@ -92,6 +85,13 @@ namespace I5Tools
                 Debug.Log("Deleting " + oscfolder);
                 System.IO.Directory.Delete(oscfolder, true);
             }
+        }
+
+        [MenuItem("Tools/I5Tools/Force Scene View in Play Mode", false, 1003)]
+        public static void CreateDebugManager()
+        {
+            GameObject debugManager = new GameObject("ForceSceneView");
+            debugManager.AddComponent<ForceSceneView>();
         }
     }
 }

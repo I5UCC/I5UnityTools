@@ -1,7 +1,7 @@
 {
   "name": "com.i5ucc.tools",
   "displayName": "I5Tools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Just a few things that make Avatar Creation workflow a bit easier.",
   "files": [
     "I5Tools.cs",
