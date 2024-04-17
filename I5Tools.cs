@@ -31,48 +31,22 @@ namespace I5Tools
                     continue;
                 }
                 TextureImporterPlatformSettings standalone = importer.GetPlatformTextureSettings("Standalone");
-                
-                if (!importer.mipmapEnabled || !importer.streamingMipmaps) {
-                    Debug.Log("Texture not in streaming mipmap mode: " + assetPath);
-                    importer.mipmapEnabled = true;
-                    importer.streamingMipmaps = true;
+
+                if (importer.textureType == TextureImporterType.NormalMap && (standalone.format != TextureImporterFormat.BC5 || !standalone.overridden))
+                {
+                    Debug.Log("Normal map not in BC5 format: " + assetPath);
+                    standalone.overridden = true;
+                    standalone.maxTextureSize = importer.maxTextureSize;
+                    standalone.format = TextureImporterFormat.BC5;
+                    importer.SetPlatformTextureSettings(standalone);
                     changesMade = true;
                 }
-
-                if (importer.textureType == TextureImporterType.NormalMap)
+                else if (importer.textureType == TextureImporterType.Default && importer.textureCompression != TextureImporterCompression.CompressedHQ && importer.DoesSourceTextureHaveAlpha() && importer.alphaSource != TextureImporterAlphaSource.None && importer.sRGBTexture)
                 {
-                    if (standalone.resizeAlgorithm != TextureResizeAlgorithm.Bilinear)
-                    {
-                        Debug.Log("Normal map not in bilinear resize mode: " + assetPath);
-                        standalone.resizeAlgorithm = TextureResizeAlgorithm.Bilinear;
-                        importer.SetPlatformTextureSettings(standalone);
-                        changesMade = true;
-                    }
-                    if (standalone.format != TextureImporterFormat.BC5 || !standalone.overridden)
-                    {
-                        Debug.Log("Normal map not in BC5 format: " + assetPath);
-                        standalone.overridden = true;
-                        standalone.maxTextureSize = importer.maxTextureSize;
-                        standalone.format = TextureImporterFormat.BC5;
-                        importer.SetPlatformTextureSettings(standalone);
-                        changesMade = true;
-                    }
-                }
-                else if (importer.textureType == TextureImporterType.Default && importer.DoesSourceTextureHaveAlpha() && importer.alphaSource != TextureImporterAlphaSource.None && importer.sRGBTexture)
-                {
-                    if (importer.mipmapFilter != TextureImporterMipFilter.KaiserFilter)
-                    {
-                        Debug.Log("Texture with alpha not in Kaiser mipmap mode: " + assetPath);
-                        importer.mipmapFilter = TextureImporterMipFilter.KaiserFilter;
-                        changesMade = true;
-                    }
-                    if (importer.textureCompression != TextureImporterCompression.CompressedHQ)
-                    {
-                        Debug.Log("Texture with alpha not in BC7 format: " + assetPath);
-                        importer.textureCompression = TextureImporterCompression.CompressedHQ;
-                        importer.alphaIsTransparency = true;
-                        changesMade = true;
-                    }
+                    Debug.Log("Texture with alpha not in BC7 format: " + assetPath);
+                    importer.textureCompression = TextureImporterCompression.CompressedHQ;
+                    importer.alphaIsTransparency = true;
+                    changesMade = true;
                 }
             }
 
