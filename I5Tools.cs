@@ -26,27 +26,56 @@ namespace I5Tools
                     Debug.LogWarning("Failed to get TextureImporter for asset: " + assetPath);
                     continue;
                 }
-                else if (importer.textureType != TextureImporterType.NormalMap && importer.textureType != TextureImporterType.Default)
+                TextureImporterPlatformSettings standalone = importer.GetPlatformTextureSettings("Standalone");
+                if (standalone == null)
                 {
+                    Debug.LogWarning("Failed to get Standalone TextureImporterPlatformSettings for asset: " + assetPath);
                     continue;
                 }
-                TextureImporterPlatformSettings standalone = importer.GetPlatformTextureSettings("Standalone");
 
-                if (importer.textureType == TextureImporterType.NormalMap && (standalone.format != TextureImporterFormat.BC5 || !standalone.overridden))
+                switch (importer.textureType)
                 {
-                    Debug.Log("Normal map not in BC5 format: " + assetPath);
-                    standalone.overridden = true;
-                    standalone.maxTextureSize = importer.maxTextureSize;
-                    standalone.format = TextureImporterFormat.BC5;
-                    importer.SetPlatformTextureSettings(standalone);
-                    changesMade = true;
-                }
-                else if (importer.textureType == TextureImporterType.Default && importer.textureCompression != TextureImporterCompression.CompressedHQ && importer.DoesSourceTextureHaveAlpha() && importer.alphaSource != TextureImporterAlphaSource.None && importer.sRGBTexture)
-                {
-                    Debug.Log("Texture with alpha not in BC7 format: " + assetPath);
-                    importer.textureCompression = TextureImporterCompression.CompressedHQ;
-                    importer.alphaIsTransparency = true;
-                    changesMade = true;
+                    case TextureImporterType.Default:
+                        if (!importer.mipmapEnabled || !importer.streamingMipmaps)
+                        {
+                            Debug.Log("Enabling mipmap streaming: " + assetPath);
+                            importer.mipmapEnabled = true;
+                            importer.streamingMipmaps = true;
+                            changesMade = true;
+                        }
+                        if (importer.crunchedCompression)
+                        {
+                            Debug.Log("Uncrunching texture: " + assetPath);
+                            importer.crunchedCompression = false;
+                            changesMade = true;
+                        }
+                        if (importer.textureCompression == TextureImporterCompression.Uncompressed)
+                        {
+                            Debug.Log("Compressing texture: " + assetPath);
+                            importer.textureCompression = TextureImporterCompression.Compressed;
+                            changesMade = true;
+                        }
+                        if (importer.textureCompression != TextureImporterCompression.CompressedHQ && importer.DoesSourceTextureHaveAlpha() && importer.alphaSource != TextureImporterAlphaSource.None && importer.sRGBTexture)
+                        {
+                            Debug.Log("Setting texture compression to BC7: " + assetPath);
+                            importer.textureCompression = TextureImporterCompression.CompressedHQ;
+                            importer.alphaIsTransparency = true;
+                            changesMade = true;
+                        }
+                        break;
+                    case TextureImporterType.NormalMap:
+                        if (standalone.format != TextureImporterFormat.BC5 || !standalone.overridden)
+                        {
+                            Debug.Log("Normal map not in BC5 format: " + assetPath);
+                            standalone.overridden = true;
+                            standalone.maxTextureSize = importer.maxTextureSize;
+                            standalone.format = TextureImporterFormat.BC5;
+                            importer.SetPlatformTextureSettings(standalone);
+                            changesMade = true;
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
 
