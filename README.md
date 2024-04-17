@@ -1,13 +1,16 @@
 # I5UnityTools [![Github All Releases](https://img.shields.io/github/downloads/i5ucc/I5UnityTools/total.svg)](https://github.com/I5UCC/I5UnityTools/releases/latest) <a href='https://ko-fi.com/i5ucc' target='_blank'><img height='35' style='border:0px;height:25px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 
-Just a few things that make my Avatar Creation workflow a bit easier. I'll add stuff on the go.
+A set of opinionated tools for VRChat Avatar creation.
 
 All tools located in `Tools/I5Tools`
 
 ## Optimize Texture Formats
 
+- Force mipmaps and streaming mipmaps
 - Sets all Normal maps to BC5 Texture format.
+- Sets Normal maps to bilinear resize mode to keep sharper detail.
 - Sets all textures that have an alpha channel to BC7. aka (DXT5 -> BC7)
+- Sets Kaiser mipmap filtering to all textures that have an alpha channel.
 
 Might expand this later when i got time for it.
 
