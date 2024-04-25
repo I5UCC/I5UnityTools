@@ -3,31 +3,9 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/downloads/i5ucc/I5UnityTools/latest/total?label=Latest%20version%20downloads)](https://github.com/I5UCC/I5UnityTools/releases/latest)
 <a href='https://ko-fi.com/i5ucc' target='_blank'><img height='35' style='border:0px;height:25px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 
-A set of opinionated tools for VRChat Avatar creation.
+A set of opinionated tools for VRChat Avatar creation. Will add new things as I need them.
 
 All tools located in `Tools/I5Tools`
-
-## Optimize Texture Formats
-
-- Sets all uncompressed textures to normal quality compression.
-- Sets all textures mipmapping and streaming mipmaps to be on.
-- Sets all textures Crunch Compression to be off.
-- Sets all Normal maps to BC5 Texture format.
-- Sets all textures that have an alpha channel to BC7.
-
-Might expand this later when i got time for it.
-
-## Force Scene View in Play Mode
-
-Creates a `ForceSceneView` Gameobject that switches to SceneView instead of GameView when going into play mode.
-
-## Make All Bones Immovable in World Space
-
-Sets all Physbones immobileType to World and sets it to 1.0. I just like to use that personally :)
-
-## Delete All OSC Config Files
-
-Deletes all usr_ folders in the VRChat OSC folder. OSC Configurator is a bit annoying sometimes :)
 
 # Download / Install
 
@@ -48,4 +26,28 @@ or <br>
   5. Paste `https://i5ucc.github.io/vpm/VRCMultiUploader.json` into the text field and click "Add"
   6. Click "I understand, Add Repository" in the popup after reading its contents
   7. Activate the checkbox next to the repository "VRCMultiUploader"
-  
+</details>
+
+# Features
+
+### ***Optimize Texture Formats***
+
+- Sets all uncompressed textures to normal quality compression.
+- Sets all textures mipmapping and streaming mipmaps to be on.
+- Sets all textures Crunch Compression to be off.
+- Sets all Normal maps to BC5 Texture format.
+- Sets all textures that have an alpha channel to BC7.
+
+### ***Force Scene View in Play Mode***
+
+Creates a `ForceSceneView` Gameobject that switches to SceneView instead of GameView when going into play mode.
+
+### ***Make All Bones Immovable in World Space***
+
+Sets all Physbones immobileType to World and sets it to 1.0. I just like to use that personally :)
+
+### ***Delete All OSC Config Files***
+
+Deletes all usr_ folders in the VRChat OSC folder. OSC Configurator is a bit annoying sometimes :)
+
+
