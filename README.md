@@ -1,6 +1,6 @@
 # I5UnityTools 
 [![Github All Releases](https://img.shields.io/github/downloads/i5ucc/I5UnityTools/total.svg)](https://github.com/I5UCC/I5UnityTools/releases/latest)
-[![GitHub release (latest by date)](https://img.shields.io/github/downloads/i5ucc/VRCTextboxSTT/latest/total?label=Latest%20version%20downloads)](https://github.com/I5UCC/VRCTextboxSTT/releases/latest)
+[![GitHub release (latest by date)](https://img.shields.io/github/downloads/i5ucc/I5UnityTools/latest/total?label=Latest%20version%20downloads)](https://github.com/I5UCC/I5UnityTools/releases/latest)
 <a href='https://ko-fi.com/i5ucc' target='_blank'><img height='35' style='border:0px;height:25px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 
 A set of opinionated tools for VRChat Avatar creation.
