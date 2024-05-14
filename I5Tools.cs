@@ -13,10 +13,10 @@ namespace I5Tools
         public static void OptimizeTextureFormats()
         {
             string[] guids = AssetDatabase.FindAssets("t:Texture2D");
-            bool changesMade = false;
 
             foreach (string guid in guids)
             {
+                bool changesMade = false;
                 string assetPath = AssetDatabase.GUIDToAssetPath(guid);
                 if (assetPath.Contains("com.unity")) continue;
 
@@ -77,13 +77,13 @@ namespace I5Tools
                     default:
                         break;
                 }
+                if (changesMade)
+                {
+                    importer.SaveAndReimport();
+                }
             }
-
-            if (changesMade)
-            {
-                AssetDatabase.SaveAssets();
-                AssetDatabase.Refresh();
-            }
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
         }
 
         [MenuItem("Tools/I5Tools/Make All Bones Immovable in World Space", false, 1001)]
