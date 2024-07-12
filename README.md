@@ -50,4 +50,8 @@ Sets all Physbones immobileType to World and sets it to 1.0. I just like to use 
 
 Deletes all usr_ folders in the VRChat OSC folder. OSC Configurator is a bit annoying sometimes :)
 
+# Other/External Tools
+
+Here are a few tools that I made for Unity that are not included here:
+- [VRCMultiUploader](https://github.com/I5UCC/VRCMultiUploader) allows you to upload all active GameObjects with a Pipeline Manager.
 
