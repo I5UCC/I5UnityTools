@@ -4,6 +4,8 @@ using UnityEditor;
 using VRC.SDK3.Dynamics.PhysBone.Components;
 using VRC.Dynamics;
 using VRC.SDKBase.Editor;
+using VRC.Core;
+using UnityEditor.SceneManagement;
 
 namespace I5Tools
 {
@@ -121,6 +123,73 @@ namespace I5Tools
         {
             GameObject debugManager = new GameObject("ForceSceneView");
             debugManager.AddComponent<ForceSceneView>();
+        }
+
+        [MenuItem("Tools/I5Tools/Set Anchor/Head", false, 1004)]
+        public static void SetAnchorHead() => SetAnchor("Armature/Hips/Spine/Chest/Neck/Head");
+
+        [MenuItem("Tools/I5Tools/Set Anchor/Chest", false, 1005)]
+        public static void SetAnchorChest() => SetAnchor("Armature/Hips/Spine/Chest");
+
+        [MenuItem("Tools/I5Tools/Set Anchor/Spine", false, 1006)]
+        public static void SetAnchorSpine() => SetAnchor("Armature/Hips/Spine");
+        
+        private static void SetAnchor(string path)
+        {
+            PipelineManager[] avatars = FindObjectsOfType<PipelineManager>();
+            int avatarCount = avatars.Length;
+
+            for (int i = 0; i < avatarCount; i++)
+            {
+                GameObject avatarObject = avatars[i].gameObject;
+                // find head bone
+                Transform anchorBone = avatarObject.transform.Find(path);
+                Debug.Log("Found bone: " + anchorBone.name);
+                // get All Meshes
+                SkinnedMeshRenderer[] skinnedMeshRenderers = avatarObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+                foreach (SkinnedMeshRenderer skinnedMeshRenderer in skinnedMeshRenderers)
+                {
+                    Debug.Log("Setting probeAnchor for " + skinnedMeshRenderer.name + " to " + anchorBone.name + " on " + avatarObject.name);
+                    skinnedMeshRenderer.probeAnchor = anchorBone;
+                }
+                MeshRenderer[] meshRenderers = avatarObject.GetComponentsInChildren<MeshRenderer>();
+                foreach (MeshRenderer meshRenderer in meshRenderers)
+                {
+                    Debug.Log("Setting probeAnchor for " + meshRenderer.name + " to " + anchorBone.name + " on " + avatarObject.name);
+                    meshRenderer.probeAnchor = anchorBone;
+                }
+            }
+
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
+        }
+        
+        [MenuItem("Tools/I5Tools/Set Biggest Bounds", false, 1004)]
+        public static void SetBiggestBounds()
+        {
+            PipelineManager[] avatars = FindObjectsOfType<PipelineManager>();
+            int avatarCount = avatars.Length;
+
+            for (int i = 0; i < avatarCount; i++)
+            {
+                GameObject avatarObject = avatars[i].gameObject;
+                // get All Meshes
+                SkinnedMeshRenderer[] skinnedMeshRenderers = avatarObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+                Bounds biggestBounds = new Bounds(Vector3.zero, Vector3.zero);
+                foreach (SkinnedMeshRenderer skinnedMeshRenderer in skinnedMeshRenderers)
+                {
+                    if (skinnedMeshRenderer.bounds.size.sqrMagnitude > biggestBounds.size.sqrMagnitude)
+                    {
+                        biggestBounds = skinnedMeshRenderer.localBounds;
+                    }
+                }
+                foreach (SkinnedMeshRenderer skinnedMeshRenderer in skinnedMeshRenderers) 
+                {
+                    Debug.Log("Setting localBounds for " + skinnedMeshRenderer.name + " to " + biggestBounds.size + " on " + avatarObject.name);
+                    skinnedMeshRenderer.localBounds = biggestBounds;
+                }
+            }
+
+            EditorSceneManager.MarkSceneDirty(EditorSceneManager.GetActiveScene());
         }
     }
 }
