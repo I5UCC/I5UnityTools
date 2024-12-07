@@ -3,7 +3,7 @@
 [![GitHub release (latest by date)](https://img.shields.io/github/downloads/i5ucc/I5UnityTools/latest/total?label=Latest%20version%20downloads)](https://github.com/I5UCC/I5UnityTools/releases/latest)
 <a href='https://ko-fi.com/i5ucc' target='_blank'><img height='35' style='border:0px;height:25px;' src='https://az743702.vo.msecnd.net/cdn/kofi3.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' />
 
-A set of opinionated tools for VRChat Avatar creation. Will add new things as I need them.
+A set of opinionated tools for VRChat Avatar creation. Will add things as I need them, nothing else~
 
 All tools located in `Tools/I5Tools`
 
